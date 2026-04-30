@@ -1,3 +1,5 @@
+"use client";
+
 import RecipeCard from "./RecipeCard";
 import Box from "@mui/material/Box";
 

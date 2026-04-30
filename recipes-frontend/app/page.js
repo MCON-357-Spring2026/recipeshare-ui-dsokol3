@@ -15,11 +15,19 @@ export default function HomePage() {
   const [error, setError] = useState("");
   const router = useRouter();
   const auth = getAuth();
+  console.log("[HomePage] auth:", auth);
 
   useEffect(() => {
+    console.log("[HomePage] fetching recipes...");
     fetchRecipes()
-        .then(setRecipes)
-        .catch((err) => setError(err.message))
+        .then((data) => {
+          console.log("[HomePage] recipes loaded:", data.length);
+          setRecipes(data);
+        })
+        .catch((err) => {
+          console.error("[HomePage] fetch error:", err.message);
+          setError(err.message);
+        })
         .finally(() => setLoading(false));
   }, []);
 
