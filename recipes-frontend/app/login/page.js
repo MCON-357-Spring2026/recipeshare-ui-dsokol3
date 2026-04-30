@@ -27,7 +27,8 @@ export default function LoginPage() {
       setError(err.message);
     }
   }
-
+  const data = await login(username, password);
+  saveAuth(username, password, data.id);   // data.id is the user's numeric id
   return (
       <main>
         <Box sx={{ maxWidth: 400, mx: "auto", mt: 10, px: 3, py: 4,
